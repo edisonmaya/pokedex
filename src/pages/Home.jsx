@@ -7,10 +7,10 @@ const Home = () => {
                 <div className="text-[#FE1936] text-3xl sm:text-4xl lg:text-5xl font-bold break-words">¡Hi trainer!</div>
                 <div className="text-[#302F2F] sm:text-2xl">To start, give me your name</div>
             </div>
-            <div className="flex w-full">
-                <input className="flex-1 h-12 sm:h-16  border border-black" type="text" />
-                <button className="bg-[#D93F3F] w-[30%] text-white" type="submit">Comenzar</button>
-            </div>
+            <form className="flex w-full shadow-[0px_3px_6px_rgba(0,0,0,0.15)]">
+                <input className="flex-1 h-12 sm:h-16 px-5 outline-none"  placeholder="Your Name" type="text" />
+                <button className="bg-[#D93F3F]  hover:bg-[#D93F3F90] transition-all w-[30%] text-white hover:text-[#D93F3F]" type="submit">Comenzar</button>
+            </form>
         </section>
         <footer className=" flex flex-col w-full h-[18vh] ">
             <div className="bg-[#DD1A1A] h-[60%] relative">
