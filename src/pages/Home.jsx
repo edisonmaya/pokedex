@@ -12,9 +12,9 @@ const Home = () => {
                 <button className="bg-[#D93F3F] w-[30%] text-white" type="submit">Comenzar</button>
             </div>
         </section>
-        <footer className=" flex flex-col w-full h-[18vh] lg:h-[20vh]">
+        <footer className=" flex flex-col w-full h-[18vh] ">
             <div className="bg-[#DD1A1A] h-[60%] relative">
-                <img  className="z-10 w-14 lg:w-16 xl:w-32 absolute -bottom-6 sm:-bottom-10 lg:-bottom-12 xl:-bottom-14 inset-x-0 mx-auto"  src="/pokeFooter.png" alt="" />
+                <img  className="z-10 h-[13vh] absolute -bottom-[7vh] inset-x-0 mx-auto"  src="/pokeFooter.png" alt="" />
             </div>
             <div className="bg-[#0C0C0C] h-[40%]"></div>
         </footer>
