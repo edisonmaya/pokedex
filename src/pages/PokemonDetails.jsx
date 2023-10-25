@@ -46,7 +46,8 @@ const PokemonDetails = () => {
             <h3 >#{pokemon?.id}</h3>
           </div>
           <div className="grid place-items-center relative w-[80%] border-b-2 border-[#9F9F9F] transition-all">
-            <h2 className="grid place-items-center max-w-[30vh]  text-[#416460] bg-white text-4xl  absolute inset-x-0 mx-auto">{pokemon?.name}</h2>
+           <div className="flex justify-center items-center w-3/4 bg-white absolute inset-x-0 mx-auto"> 
+           <h2 className=" text-[#416460] text-4xl text-center">{pokemon?.name}</h2></div>
           </div>
 
 
