@@ -24,7 +24,7 @@ const Home = () => {
             </div>
             <form onSubmit={handleSubmit} className="flex shadow-[0px_3px_6px_rgba(0,0,0,0.15)]">
                 <input name = "trainerName" className="flex-1 h-12 sm:h-16 px-1 sm:px-5 outline-none"  placeholder="Your Name" type="text" />
-                <button className="bg-[#D93F3F]  hover:bg-[#D93F3F90]  sm:px-4 text-white hover:text-[#D93F3F] transition-all" type="submit">Comenzar</button>   
+                <button className="bg-[#D93F3F]  hover:bg-[#D93F3F90]  sm:px-4 text-white hover:text-[#D93F3F] transition-all" type="submit">Start</button>   
             </form>
         </section>
         <footer className=" flex flex-col w-full h-[18vh] ">
