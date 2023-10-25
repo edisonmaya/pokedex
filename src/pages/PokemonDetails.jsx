@@ -23,7 +23,7 @@ const PokemonDetails = () => {
 
   return (
     <main>
-      <article className=" font-['Roboto'] grid place-items-center min-h-screen gap-16 capitalize text-[#302F2F] ">
+      <article className=" font-['Roboto'] grid place-items-center min-h-screen gap-16 capitalize text-[#302F2F]  ">
 
         <section className=" flex flex-col w-full h-[25vh] ">
           <div className=" bg-[#DD1A1A] h-[60%] flex justify-center ">
@@ -35,7 +35,7 @@ const PokemonDetails = () => {
           <div className="bg-[#0C0C0C] h-[20%]"></div>
         </section>
 
-        <section className=" flex flex-col max-w-xl items-center gap-8 min-h-screen  shadow-[0px_2px_16px_rgba(0,0,0,0.15)] rounded pb-9 mb-9">
+        <section className=" flex flex-col w-[80%] sm:max-w-xl  items-center gap-8 min-h-screen  shadow-[0px_2px_16px_rgba(0,0,0,0.15)] rounded pb-9 mb-9">
           <header className=" flex flex-col w-full   ">
             <div className={`flex justify-between w-full h-[25vh] relative  p-1 ${ bgByType[pokemon?.types[0].type.name]}`}>
               <img className="flex z-10 h-[40vh] bottom-1 absolute  inset-x-0 mx-auto  transition-all" src={pokemon?.sprites.other["official-artwork"].front_default} alt="" />
@@ -47,11 +47,11 @@ const PokemonDetails = () => {
           </div>
           <div className="grid place-items-center relative w-[80%] border-b-2 border-[#9F9F9F] transition-all">
            <div className="flex justify-center items-center w-3/4 bg-white absolute inset-x-0 mx-auto"> 
-           <h2 className=" text-[#416460] text-4xl text-center">{pokemon?.name}</h2></div>
+           <h2 className=" text-[#416460] text-3xl md:text-4xl text-center">{pokemon?.name}</h2></div>
           </div>
 
 
-          <article className="max-w-xl px-8 ">
+          <article className="w-full px-4 md:px-8   ">
             <section className="grid justify-center items-start gap-1 md:grid-cols-2 md:text-xl ">
               <article className="grid place-items-center gap-8">
                 
@@ -84,7 +84,7 @@ const PokemonDetails = () => {
             </section>
 
 
-            <h3 className="text-2xl my-9">Stats</h3>
+            <h3 className="text-2xl my-9 ">Stats</h3>
             <ul>
               {
                 pokemon?.stats.map((stat) =>
