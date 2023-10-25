@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import PokemonList from "../components/pokedex/PokemonList"
+import { paginateData } from "./utils/paginateData"
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([])
@@ -10,12 +11,14 @@ const Pokedex = () => {
   const [currentType, setCurrentType] = useState("")
   const trainerName = useSelector((store) => store.trainerName)
   const pokemonsByName = pokemons.filter((pokemon)=>pokemon.name.includes(pokemonName))
-  console.log(pokemonsByName);
+  const [currentPage, setCurrentPage] = useState(1)
+  const {itemsInCurrentPage, lastPage, pagesInCurrentBlock} = paginateData(pokemonsByName,currentPage)
+  
   useEffect(()=>{
     if(currentType==="")
     {
     axios
-    .get("https://pokeapi.co/api/v2/pokemon")
+    .get("https://pokeapi.co/api/v2/pokemon?limit=1292")
     .then(({data})=>setPokemons(data.results))
     .catch((err)=>console.log(err))
   }},[currentType])
@@ -33,8 +36,12 @@ const Pokedex = () => {
       .then(({data})=>{setPokemons(data.pokemon.map((pokemon)=> pokemon.pokemon))})
       .catch((err)=>console.log(err))
     }
-
   },[currentType])
+
+  useEffect(()=>{
+  setCurrentPage(1)
+  },[currentType])
+  
   const handleSubmit = (e)=>{
     e.preventDefault()
     setPokemonName(e.target.pokemonName.value.toLowerCase().trim())
@@ -42,6 +49,25 @@ const Pokedex = () => {
   const handleChangeType = (e)=>{
       setCurrentType(e.target.value)
   }
+  const handlePreviusPage=()=>{
+    const newCurrentPage = currentPage - 1
+    if(newCurrentPage>=1)
+    {
+      setCurrentPage(newCurrentPage)
+    }  
+
+  }
+  const handleNextPage=()=>{
+    const newCurrentPage = currentPage + 1
+    if(newCurrentPage<=lastPage)
+    {
+      setCurrentPage(newCurrentPage)
+    }  
+
+  }
+
+
+
   return (
     <main className=" grid place-items-center min-h-screen">
       <header className=" flex flex-col w-full h-[25vh] ">
@@ -61,7 +87,7 @@ const Pokedex = () => {
 
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row w-full gap-2">
           <div className="flex flex-1  shadow-[0px_3px_6px_rgba(0,0,0,0.15)]">
-            <input name="pokemonName" className="flex-1 h-12 sm:h-16 px-1 sm:px-5 outline-none" placeholder="Pokemon Name" type="text" />
+            <input  name="pokemonName" className="flex-1 h-12 sm:h-16 px-1 sm:px-5 outline-none" placeholder="Pokemon Name" type="text" />
             <button className="bg-[#D93F3F] hover:bg-[#D93F3F90] transition-all w-[30%] sm:p-2 text-white hover:text-[#D93F3F]" type="submit">Search</button>
           </div>
           <select onChange={handleChangeType} name="" id="" className="flex-1 shadow-[0px_3px_6px_rgba(0,0,0,0.15)] capitalize outline-none">
@@ -71,10 +97,33 @@ const Pokedex = () => {
             }
           </select>
         </form>
-
-      <PokemonList pokemons={pokemonsByName}/>
+            
+      <PokemonList pokemons={itemsInCurrentPage}/>
       </section>
-
+            <ul className="flex flex-wrap gap-2 justify-center items-center my-8">
+                {currentPage!==1 &&(
+                  <li>  
+                    <button onClick={handlePreviusPage}
+                className=" w-12 p-2 text-center rounded-md bg-slate-700 border border-gray-600 hover:bg-slate-900 hover:text-white transition-all ">{"<"}</button>
+                </li>
+                )}
+              {
+                pagesInCurrentBlock.map((page)=>(
+                  <li key={page}> 
+                  <button onClick={()=>setCurrentPage(page)}
+                  className={` w-12 p-2 text-center rounded-md transition-all ${currentPage === page ? "bg-red-400 border" : "hover:bg-red-300 hover:text-white"} `}>
+                    {page}
+                  </button>
+                  </li>
+                )
+              )}
+                {currentPage!==lastPage &&(
+              <li>
+                <button onClick={handleNextPage}
+                className=" w-12 p-2 text-center rounded-md bg-slate-700 border border-gray-600 hover:bg-slate-900 hover:text-white transition-all ">{">"}</button>
+              </li>
+                )}
+            </ul>
     </main>
 
   )

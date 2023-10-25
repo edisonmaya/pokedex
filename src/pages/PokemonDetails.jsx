@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { bgByType} from "../constants/pokemon"
+import { bgByType } from "../constants/pokemon"
 
 const PokemonDetails = () => {
 
@@ -37,7 +37,7 @@ const PokemonDetails = () => {
 
         <section className=" flex flex-col w-[80%] sm:max-w-xl  items-center gap-8 min-h-screen  shadow-[0px_2px_16px_rgba(0,0,0,0.15)] rounded pb-9 mb-9">
           <header className=" flex flex-col w-full   ">
-            <div className={`flex justify-between w-full h-[25vh] relative  p-1 ${ bgByType[pokemon?.types[0].type.name]}`}>
+            <div className={`flex justify-between w-full h-[25vh] relative  p-1 ${bgByType[pokemon?.types[0].type.name]}`}>
               <img className="flex z-10 h-[40vh] bottom-1 absolute  inset-x-0 mx-auto  transition-all" src={pokemon?.sprites.other["official-artwork"].front_default} alt="" />
             </div>
           </header>
@@ -46,21 +46,22 @@ const PokemonDetails = () => {
             <h3 >#{pokemon?.id}</h3>
           </div>
           <div className="grid place-items-center relative w-[80%] border-b-2 border-[#9F9F9F] transition-all">
-           <div className="flex justify-center items-center w-3/4 bg-white absolute inset-x-0 mx-auto"> 
-           <h2 className=" text-[#416460] text-3xl md:text-4xl text-center">{pokemon?.name}</h2></div>
+            <div className="flex justify-center items-center  absolute inset-x-0 mx-auto">
+              <h2 className="bg-white p-4 text-[#416460] text-3xl md:text-4xl text-center">{pokemon?.name}</h2>
+            </div>
           </div>
 
 
           <article className="w-full px-4 md:px-8   ">
             <section className="grid justify-center items-start gap-1 md:grid-cols-2 md:text-xl ">
               <article className="grid place-items-center gap-8">
-                
+
                 <h3 className="  text-center mt-6">Types</h3>
                 <ul className="flex md:gap-2 justify-between items-start " >
                   {
                     pokemon?.types.map((type) =>
                       <li key={type.type.url} >
-                        <div className={`text-center border-2 px-3 py-2 rounded-md ${ bgByType[type?.type.name]}`}>
+                        <div className={`text-center border-2 px-3 py-2 rounded-md ${bgByType[type?.type.name]}`}>
                           {type.type.name}
                         </div>
                       </li>)
