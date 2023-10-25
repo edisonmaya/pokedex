@@ -35,27 +35,27 @@ const PokemonDetails = () => {
           <div className="bg-[#0C0C0C] h-[20%]"></div>
         </section>
 
-        <section className=" flex flex-col w-[80%] items-center gap-8 min-h-screen  shadow-[0px_2px_16px_rgba(0,0,0,0.15)] rounded pb-9 mb-9">
+        <section className=" flex flex-col max-w-xl items-center gap-8 min-h-screen  shadow-[0px_2px_16px_rgba(0,0,0,0.15)] rounded pb-9 mb-9">
           <header className=" flex flex-col w-full   ">
             <div className={`flex justify-between w-full h-[25vh] relative  p-1 ${ bgByType[pokemon?.types[0].type.name]}`}>
               <img className="flex z-10 h-[40vh] bottom-1 absolute  inset-x-0 mx-auto  transition-all" src={pokemon?.sprites.other["official-artwork"].front_default} alt="" />
             </div>
           </header>
 
-          <div className="grid place-items-center border shadow-[0px_2px_16px_rgba(0,0,0,0.15)] text-[#416460] text-5xl p-2 rounded-md">
+          <div className="grid place-items-center border shadow-[0px_2px_16px_rgba(0,0,0,0.15)] text-[#416460]  text-4xl p-2 my-4  rounded-md">
             <h3 >#{pokemon?.id}</h3>
           </div>
           <div className="grid place-items-center relative w-[80%] border-b-2 border-[#9F9F9F] transition-all">
-            <h2 className="grid place-items-center w-[30vh] md:w-[35vh] text-[#416460] bg-white text-4xl lg:text-5xl  absolute inset-x-0 mx-auto">{pokemon?.name}</h2>
+            <h2 className="grid place-items-center max-w-[30vh]  text-[#416460] bg-white text-4xl  absolute inset-x-0 mx-auto">{pokemon?.name}</h2>
           </div>
 
 
-          <article className="w-[80%]">
-            <section className="grid place-items-center gap-8 md:grid-cols-2 md:text-2xl ">
+          <article className="max-w-xl px-8 ">
+            <section className="grid justify-center items-start gap-1 md:grid-cols-2 md:text-xl ">
               <article className="grid place-items-center gap-8">
-
-                <h3 className="  text-center ">Types</h3>
-                <ul className="flex md:gap-2 justify-between " >
+                
+                <h3 className="  text-center mt-6">Types</h3>
+                <ul className="flex md:gap-2 justify-between items-start " >
                   {
                     pokemon?.types.map((type) =>
                       <li key={type.type.url} >
@@ -66,10 +66,10 @@ const PokemonDetails = () => {
                   }
                 </ul>
               </article>
-              <article className="grid place-items-center gap-8">
+              <article className="grid justify-center items-start gap-8">
 
-                <h3 className="  text-center">Abilities</h3>
-                <ul className="flex flex-wrap sm:flex-nowrap md:gap-2 justify-center" >
+                <h3 className="  text-center mt-6">Abilities</h3>
+                <ul className="flex flex-wrap md:gap-2 justify-center items-start" >
                   {
                     pokemon?.abilities.map((abilitie) =>
                       <li key={abilitie.ability.url} >
