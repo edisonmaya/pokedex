@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { bgByType} from "../constants/pokemon"
 
 const PokemonDetails = () => {
 
@@ -34,9 +35,9 @@ const PokemonDetails = () => {
           <div className="bg-[#0C0C0C] h-[20%]"></div>
         </section>
 
-        <section className=" flex flex-col w-[80%] items-center gap-8 min-h-screen  shadow-[0px_2px_16px_rgba(0,0,0,0.15)] rounded">
+        <section className=" flex flex-col w-[80%] items-center gap-8 min-h-screen  shadow-[0px_2px_16px_rgba(0,0,0,0.15)] rounded pb-9 mb-9">
           <header className=" flex flex-col w-full   ">
-            <div className="flex justify-between w-full h-[25vh] relative  p-1 bg-[linear-gradient(179deg,_#7EC6C5_10%,_#ABDAC6_48%,_#CAE099_100%)]">
+            <div className={`flex justify-between w-full h-[25vh] relative  p-1 ${ bgByType[pokemon?.types[0].type.name]}`}>
               <img className="flex z-10 h-[40vh] bottom-1 absolute  inset-x-0 mx-auto  transition-all" src={pokemon?.sprites.other["official-artwork"].front_default} alt="" />
             </div>
           </header>
@@ -58,7 +59,7 @@ const PokemonDetails = () => {
                   {
                     pokemon?.types.map((type) =>
                       <li key={type.type.url} >
-                        <div className="text-center border-2 px-3 py-2 rounded-md">
+                        <div className={`text-center border-2 px-3 py-2 rounded-md ${ bgByType[type?.type.name]}`}>
                           {type.type.name}
                         </div>
                       </li>)
@@ -82,7 +83,7 @@ const PokemonDetails = () => {
             </section>
 
 
-            <h3>Stats</h3>
+            <h3 className="text-2xl my-9">Stats</h3>
             <ul>
               {
                 pokemon?.stats.map((stat) =>
